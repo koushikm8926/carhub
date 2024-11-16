@@ -1,0 +1,5 @@
+[
+    { "id": 3, "model": "ModelC", "brand": "BrandZ", "colour": "Black", "price": 35000, "units": 8 },
+    { "id": 4, "model": "ModelD", "brand": "BrandA", "colour": "White", "price": 28000, "units": 6 }
+  ]
+  

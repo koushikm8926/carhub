@@ -120,3 +120,47 @@ if (command === 'remove') {
     console.log("Car data updated successfully.");
   }
   
+
+
+  //Marge two files new_cars.json data to cars.json file 
+
+  if (command === 'import') {
+    if (process.argv.length < 5) {
+      console.log("Error: Insufficient arguments. Usage: carhub import <file_cars> <input_file>");
+      return;
+    }
+  
+    const fileCars = process.argv[3];  // New cars file
+    const inputFile = process.argv[4]; // Existing cars file
+  
+    // Check if both files exist
+    if (!fs.existsSync(fileCars)) {
+      console.log(`Error: The file ${fileCars} does not exist.`);
+      return;
+    }
+    if (!fs.existsSync(inputFile)) {
+      console.log(`Error: The file ${inputFile} does not exist.`);
+      return;
+    }
+  
+    try {
+      // Read both files
+      const newCars = JSON.parse(fs.readFileSync(fileCars, 'utf-8'));
+      const existingCars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
+  
+      if (!Array.isArray(newCars) || !Array.isArray(existingCars)) {
+        console.log("Error: The provided files do not contain valid car data.");
+        return;
+      }
+  
+      // Merge the cars (concatenate arrays)
+      const mergedCars = existingCars.concat(newCars);
+  
+      // Write the merged list back to the input file
+      fs.writeFileSync(inputFile, JSON.stringify(mergedCars, null, 2));
+      console.log("Cars imported successfully.");
+    } catch (error) {
+      console.log("Error reading or parsing the files:", error.message);
+    }
+  }
+  
