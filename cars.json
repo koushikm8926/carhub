@@ -7,14 +7,5 @@
     "price": 80000,
     "units": 5,
     "sold": 10
-  },
-  {
-    "model": "ModelX",
-    "brand": "BrandY",
-    "colour": "Red",
-    "price": 30000,
-    "units": 30,
-    "sold": 0,
-    "id": 2
   }
 ]

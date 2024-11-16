@@ -85,3 +85,38 @@ if (command === 'add') {
   fs.writeFileSync(inputFile, JSON.stringify(cars, null, 2));
   console.log("Car data updated successfully.");
 }
+
+
+// Remove a car by ID
+if (command === 'remove') {
+    if (process.argv.length < 5) {
+      console.log("Error: Insufficient arguments. Usage: carhub remove <id> <input_file>");
+      return;
+    }
+  
+    const id = Number(process.argv[3]);
+  
+    if (!fs.existsSync(inputFile)) {
+      console.log(`Error: The file ${inputFile} does not exist.`);
+      return;
+    }
+  
+    const cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
+  
+    // Find the car with the given ID
+    const carIndex = cars.findIndex(car => car.id === id);
+  
+    if (carIndex === -1) {
+      console.log(`Error: No car found with ID ${id}.`);
+      return;
+    }
+  
+    // Remove the car from the array
+    const removedCar = cars.splice(carIndex, 1);
+    console.log(`Removed car with ID ${id}:`, removedCar[0]);
+  
+    // Write the updated data back to the file
+    fs.writeFileSync(inputFile, JSON.stringify(cars, null, 2));
+    console.log("Car data updated successfully.");
+  }
+  
