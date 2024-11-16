@@ -164,3 +164,76 @@ if (command === 'remove') {
     }
   }
   
+
+
+  if (command === 'search') {
+    if (process.argv.length < 4) {
+      console.log("Error: Insufficient arguments. Usage: carhub search [--model=<model>] [--brand=<brand>] [--colour=<colour>] [--price-range=<min>:<max>] input_file");
+      return;
+    }
+  
+    // Extract the input file path from the command line arguments
+    const inputFile = process.argv[process.argv.length - 1];
+  
+    // Check if the input file exists
+    if (!fs.existsSync(inputFile)) {
+      console.log(`Error: The file ${inputFile} does not exist.`);
+      return;
+    }
+  
+    // Read the data from the input file
+    let cars;
+    try {
+      cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
+    } catch (error) {
+      console.log("Error reading or parsing the file:", error.message);
+      return;
+    }
+  
+    // Initialize an object to hold the search filters
+    const filters = {
+      model: null,
+      brand: null,
+      colour: null,
+      priceRange: null
+    };
+  
+    // Parse command line arguments to extract filter values
+    process.argv.forEach((arg, index) => {
+      if (arg.startsWith('--model=')) {
+        filters.model = arg.split('=')[1];
+      } else if (arg.startsWith('--brand=')) {
+        filters.brand = arg.split('=')[1];
+      } else if (arg.startsWith('--colour=')) {
+        filters.colour = arg.split('=')[1];
+      } else if (arg.startsWith('--price-range=')) {
+        const range = arg.split('=')[1].split(':');
+        filters.priceRange = {
+          min: parseFloat(range[0]),
+          max: parseFloat(range[1])
+        };
+      }
+    });
+  
+    // Filter cars based on the provided search criteria
+    const filteredCars = cars.filter(car => {
+      // Check if car matches the filters
+      const matchesModel = filters.model ? car.model.toLowerCase().includes(filters.model.toLowerCase()) : true;
+      const matchesBrand = filters.brand ? car.brand.toLowerCase().includes(filters.brand.toLowerCase()) : true;
+      const matchesColour = filters.colour ? car.colour.toLowerCase().includes(filters.colour.toLowerCase()) : true;
+      const matchesPriceRange = filters.priceRange
+        ? car.price >= filters.priceRange.min && car.price <= filters.priceRange.max
+        : true;
+  
+      return matchesModel && matchesBrand && matchesColour && matchesPriceRange;
+    });
+  
+    // If there are no matching results, display a message
+    if (filteredCars.length === 0) {
+      console.log("No cars found matching the search criteria.");
+    } else {
+      // Display the filtered results in a table
+      console.table(filteredCars);
+    }
+  }
+  
