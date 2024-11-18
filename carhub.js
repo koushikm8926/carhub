@@ -236,4 +236,39 @@ if (command === 'remove') {
       console.table(filteredCars);
     }
   }
+
+  
+//total inventry value
+  if (command === 'total') {
+    if (process.argv.length < 4) {
+      console.log("Error: Insufficient arguments. Usage: carhub total input_file");
+      return;
+    }
+  
+    // Extract the input file path
+    const inputFile = process.argv[process.argv.length - 1];
+  
+    // Check if the input file exists
+    if (!fs.existsSync(inputFile)) {
+      console.log(`Error: The file ${inputFile} does not exist.`);
+      return;
+    }
+  
+    // Read the data from the input file
+    let cars;
+    try {
+      cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
+    } catch (error) {
+      console.log("Error reading or parsing the file:", error.message);
+      return;
+    }
+  
+    // Calculate the total inventory value
+    const totalValue = cars.reduce((accumulator, car) => {
+      return accumulator + (car.price * car.units);
+    }, 0);
+  
+    // Display the total inventory value
+    console.log(`Total inventory value: ${totalValue}€`);
+  }
   
