@@ -15,7 +15,7 @@
     "colour": "Black",
     "price": 35000,
     "units": 8,
-    "sold": 7
+    "sold": 10
   },
   {
     "id": 4,
@@ -24,6 +24,6 @@
     "colour": "White",
     "price": 28000,
     "units": 6,
-    "sold": 15
+    "sold": 10
   }
 ]

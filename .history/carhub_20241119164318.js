@@ -272,7 +272,7 @@ if (command === 'remove') {
     console.log(`Total inventory value: ${totalValue}€`);
   }
   
-//identifies the X best-selling cars
+  //identifies the X best-selling cars
 if (command === 'best-selling') {
   if (process.argv.length < 4) {
     console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
