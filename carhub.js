@@ -1,22 +1,50 @@
+// Import necessary modules
 const fs = require('fs');
 const os = require('os');
 
-console.log("Starting carhub.js...");
+// Parse the command-line arguments
+const args = process.argv.slice(2); // Declare args properly here
+const command = args[0]; // First argument is the command (e.g., 'list')
+//const inputFile = args[1]; // Second argument is the file name
 
-const command = process.argv[2];
-const inputFile = process.argv[process.argv.length - 1]; // The last argument is the input file
-console.log("Command received:", command);
-
-// Display help information
-if (command === 'help') {
-  console.log(`
-    CarHub - Manage a car concessionaire
-    Options:
-      help               Show available commands
-      list <input_file>  List all cars in inventory
-      add <model> <brand> <colour> <price> <units> <input_file>  Add a new car or update units
-  `);
+if (args.length < 1) {
+  console.log("ERROR: You should introduce the option.\nUsage: carhub <options><input_file>");
+  process.exit(1);
 }
+
+// Step 2: Extract the option and input file
+const option = args[0];
+const inputFile = args[args.length - 1];
+
+// Step 3: Validate the input file
+if (option !== 'help' && !fs.existsSync(inputFile)) {
+  console.log("ERROR: The input file could not be found or is invalid. Please introduce an input file with a valid format.");
+  process.exit(1);
+}
+
+
+// Step 4: Handle each option
+if (option === 'help') {
+  console.log(`CarHub - Manage a car concessionnaire`);
+  console.log(`Usage: carhub <options> <input_file>`);
+  console.log(`Options:
+    - help: Show this help information
+    - add: Add a car
+    - remove: Remove a car by ID
+    - list: List all cars
+    - search: Search for cars by filters
+    - import: Import cars from another file
+    - total: Calculate total inventory value
+    - best-selling: Display top X best-selling cars
+  `);
+  console.log(`Operating System: ${os.platform()} ${os.release()}`);
+  console.log(`Version: 1.0.0`);
+  process.exit(0); // Exit the script after showing help
+}
+
+console.log("Arguments passed:", args);
+console.log("Input file path:", inputFile);
+
 
 // List cars in inventory
 if (command === 'list') {
