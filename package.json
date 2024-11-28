@@ -11,8 +11,5 @@
   "description": "",
   "dependencies": {
     "console.table": "^0.10.0"
-  },
-  "devDependencies": {
-    "jest": "^29.7.0"
   }
 }
