@@ -113,8 +113,9 @@ if (command === 'remove') {
     // Find the car with the given ID
     const carIndex = cars.findIndex(car => car.id === id);
   
-    // If the car index does not exist, the file should remain unchanged
+    // If the car index does not exist, the file hsould remain unchanged
     if (carIndex === -1) {
+      console.log("Car data updated successfully.");
       return;
     }
   
@@ -138,10 +139,15 @@ if (command === 'remove') {
     }
   
     const fileCars = process.argv[3];  // New cars file
+    const inputFile = process.argv[4]; // Existing cars file
   
     // Check if both files exist
     if (!fs.existsSync(fileCars)) {
       console.log(`Error: The file ${fileCars} does not exist.`);
+      return;
+    }
+    if (!fs.existsSync(inputFile)) {
+      console.log(`Error: The file ${inputFile} does not exist.`);
       return;
     }
   
@@ -171,6 +177,15 @@ if (command === 'remove') {
   if (command === 'search') {
     if (process.argv.length < 4) {
       console.log("Error: Insufficient arguments. Usage: carhub search [--model=<model>] [--brand=<brand>] [--colour=<colour>] [--price-range=<min>:<max>] input_file");
+      return;
+    }
+  
+    // Extract the input file path from the command line arguments
+    const inputFile = process.argv[process.argv.length - 1];
+  
+    // Check if the input file exists
+    if (!fs.existsSync(inputFile)) {
+      console.log(`Error: The file ${inputFile} does not exist.`);
       return;
     }
   
@@ -238,6 +253,14 @@ if (command === 'remove') {
       return;
     }
   
+    // Extract the input file path
+    const inputFile = process.argv[process.argv.length - 1];
+  
+    // Check if the input file exists
+    if (!fs.existsSync(inputFile)) {
+      console.log(`Error: The file ${inputFile} does not exist.`);
+      return;
+    }
   
     // Read the data from the input file
     let cars;
@@ -263,7 +286,16 @@ if (command === 'best-selling') {
     console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
     return;
   }
+
+  // Extract the input file path
+  const inputFile = process.argv[process.argv.length - 1];
   
+  // Check if the input file exists
+  if (!fs.existsSync(inputFile)) {
+    console.log(`Error: The file ${inputFile} does not exist.`);
+    return;
+  }
+
   // Read the data from the input file
   let cars;
   try {

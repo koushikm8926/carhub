@@ -174,6 +174,9 @@ if (command === 'remove') {
       return;
     }
   
+    // Extract the input file path from the command line arguments
+    const inputFile = process.argv[process.argv.length - 1];
+  
     // Read the data from the input file
     let cars;
     try {
@@ -238,6 +241,9 @@ if (command === 'remove') {
       return;
     }
   
+    // Extract the input file path
+    const inputFile = process.argv[process.argv.length - 1];
+  
   
     // Read the data from the input file
     let cars;
@@ -263,6 +269,9 @@ if (command === 'best-selling') {
     console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
     return;
   }
+
+  // Extract the input file path
+  const inputFile = process.argv[process.argv.length - 1];
   
   // Read the data from the input file
   let cars;
