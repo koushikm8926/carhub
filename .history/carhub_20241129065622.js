@@ -34,14 +34,15 @@ if (command === 'help') {
     - search: Search for cars by filters
     - import: Import cars from another file
     - total: Calculate total inventory value
-    - best-selling: Display top X best-selling cars`);
+    - best-selling: Display top X best-selling cars
+  `);
   console.log(`Operating System: ${os.platform()} ${os.release()}`);
   console.log(`Version: 1.0.0`);
   process.exit(0); // Exit the script after showing help
 }
 
-//console.log("Arguments passed:", args);
-//console.log("Input file path:", inputFile);
+console.log("Arguments passed:", args);
+console.log("Input file path:", inputFile);
 
 
 // List cars in inventory
@@ -286,4 +287,5 @@ if (command === 'best-selling') {
   });
 }
 
-process.exit(0);
+console.log("if arrived here, something has gone wrong")
+process.exit(1);

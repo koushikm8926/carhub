@@ -286,4 +286,4 @@ if (command === 'best-selling') {
   });
 }
 
-process.exit(0);
+process.exit(1);
