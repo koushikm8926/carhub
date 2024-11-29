@@ -3,6 +3,6 @@ module.exports = {
   testMatch: ['**/tests/**/*.test.js'],
   setupFilesAfterEnv: [],
   collectCoverage: true,
-  collectCoverageFrom: ['carhub.js'],
+  collectCoverageFrom: ['./carhub.js'],
   coverageReporters: ['text'],
 };

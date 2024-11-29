@@ -6,7 +6,7 @@ const fs = require('fs');
 
 
 describe('CLI App', () => {
-  const CLI_PATH = './carhub.js'; // Path to your CLI file
+  const CLI_PATH = '../carhub.js'; // Path to your CLI file
   const filePath = path.resolve(__dirname, '../cars.JSON');
 
   it('TC1', async () => {

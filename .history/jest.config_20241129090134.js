@@ -2,7 +2,9 @@ module.exports = {
   testEnvironment: 'node',
   testMatch: ['**/tests/**/*.test.js'],
   setupFilesAfterEnv: [],
+  rootDir: './',
   collectCoverage: true,
-  collectCoverageFrom: ['carhub.js'],
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: ['<rootDir>/carhub.js'],
   coverageReporters: ['text'],
 };

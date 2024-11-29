@@ -6,7 +6,7 @@ const fs = require('fs');
 
 
 describe('CLI App', () => {
-  const CLI_PATH = './carhub.js'; // Path to your CLI file
+  const CLI_PATH = '../carhub.js'; // Path to your CLI file
   const filePath = path.resolve(__dirname, '../cars.JSON');
 
   it('TC1', async () => {
@@ -96,7 +96,7 @@ describe('CLI App', () => {
     fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
   
     // Step 2: Run the `add` command
-    await execa('node', [CLI_PATH, 'add', 'Aventador', 'Lamborghini', 'yellow', '80000', '3', testFilePath]);
+    await execa('node', ['carhub', 'add', 'Aventador', 'Lamborghini', 'yellow', '80000', '3', testFilePath]);
     
     // Step 3: Read and verify the JSON file
     const updatedData = JSON.parse(fs.readFileSync(testFilePath, 'utf8'));
