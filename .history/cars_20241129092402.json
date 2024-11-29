@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "model": "ModelX",
+    "brand": "Tesla",
+    "colour": "White",
+    "price": 80000,
+    "units": 5,
+    "sold": 10
+  },
+  {
+    "id": 3,
+    "model": "ModelC",
+    "brand": "BrandZ",
+    "colour": "Black",
+    "price": 35000,
+    "units": 8,
+    "sold": 7
+  },
+  {
+    "id": 4,
+    "model": "ModelD",
+    "brand": "BrandA",
+    "colour": "White",
+    "price": 28000,
+    "units": 6,
+    "sold": 15
+  },
+  {
+    "model": "i30",
+    "brand": "hyundai",
+    "colour": "blue",
+    "price": 30000,
+    "units": 9,
+    "sold": 0,
+    "id": 5
+  }
+
+]
