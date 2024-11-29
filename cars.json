@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "model": "Model X",
+    "model": "ModelX",
     "brand": "Tesla",
     "colour": "White",
     "price": 80000,
@@ -25,5 +25,14 @@
     "price": 28000,
     "units": 6,
     "sold": 15
+  },
+  {
+    "model": "i30",
+    "brand": "hyundai",
+    "colour": "blue",
+    "price": 30000,
+    "units": 9,
+    "sold": 0,
+    "id": 5
   }
 ]
