@@ -1,0 +1,26 @@
+{
+  "name": "carhub",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "console.table": "^0.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nyc": "^17.1.0"
+  }
+  {
+    "nyc": {
+      "include": ["cli.js"],
+      "reporter": ["text", "html"],
+      "all": true
+    }
+  }
+}
