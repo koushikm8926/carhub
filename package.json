@@ -10,16 +10,20 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "console.table": "^0.10.0"
+    "console.table": "^0.10.0",
+    "table": "^6.8.2"
   },
   "devDependencies": {
     "jest": "^29.7.0",
     "nyc": "^17.1.0"
   },
   "nyc": {
-    "include": ["carhub.js"],
-    "reporter": ["text"],
+    "include": [
+      "carhub.js"
+    ],
+    "reporter": [
+      "text"
+    ],
     "all": true
   }
-
 }
