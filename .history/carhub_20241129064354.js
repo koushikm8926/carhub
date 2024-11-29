@@ -16,14 +16,14 @@ if (args.length < 1) {
 const inputFile = args[args.length - 1];
 
 // Step 3: Validate the input file
-if (command !== 'help' && !fs.existsSync(inputFile)) {
+if (option !== 'help' && !fs.existsSync(inputFile)) {
   console.log("ERROR: The input file could not be found or is invalid. Please introduce an input file with a valid format.");
   process.exit(1);
 }
 
 
 // Step 4: Handle each option
-if (command === 'help') {
+if (option === 'help') {
   console.log(`CarHub - Manage a car concessionnaire`);
   console.log(`Usage: carhub <options> <input_file>`);
   console.log(`Options:
@@ -180,7 +180,7 @@ if (command === 'remove') {
       cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
     } catch (error) {
       console.log("Error reading or parsing the file:", error.message);
-      process.exit(1);
+      return;
     }
   
     // Initialize an object to hold the search filters
@@ -235,7 +235,7 @@ if (command === 'remove') {
   if (command === 'total') {
     if (process.argv.length < 4) {
       console.log("Error: Insufficient arguments. Usage: carhub total input_file");
-      process.exit(1);
+      return;
     }
   
   
@@ -245,7 +245,7 @@ if (command === 'remove') {
       cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
     } catch (error) {
       console.log("Error reading or parsing the file:", error.message);
-      process.exit(1);
+      return;
     }
   
     // Calculate the total inventory value
@@ -261,7 +261,7 @@ if (command === 'remove') {
 if (command === 'best-selling') {
   if (process.argv.length < 4) {
     console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
-    process.exit(1);
+    return;
   }
   
   // Read the data from the input file
@@ -270,7 +270,7 @@ if (command === 'best-selling') {
     cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
   } catch (error) {
     console.log("Error reading or parsing the file:", error.message);
-    process.exit(1);
+    return;
   }
 
   const numberOfBestSellingCars = parseInt(process.argv[2]);

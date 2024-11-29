@@ -16,14 +16,14 @@ if (args.length < 1) {
 const inputFile = args[args.length - 1];
 
 // Step 3: Validate the input file
-if (command !== 'help' && !fs.existsSync(inputFile)) {
+if (option !== 'help' && !fs.existsSync(inputFile)) {
   console.log("ERROR: The input file could not be found or is invalid. Please introduce an input file with a valid format.");
   process.exit(1);
 }
 
 
 // Step 4: Handle each option
-if (command === 'help') {
+if (option === 'help') {
   console.log(`CarHub - Manage a car concessionnaire`);
   console.log(`Usage: carhub <options> <input_file>`);
   console.log(`Options:

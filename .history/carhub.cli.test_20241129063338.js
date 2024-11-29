@@ -1,8 +1,8 @@
 const { spawn } = require('child_process');
 const { expect } = require('@jest/globals');
 
-test('simulate command line input for help', (done) => {
-  const child = spawn('node', ['../carhub.js', 'carhub help']);
+test('TC 1', (done) => {
+  const child = spawn('node', ['../carhub.js', 'carhub cars.JSON']);
 
   //below is currently just placeholder showing format
   child.stdout.on('data', (data) => {

@@ -23,7 +23,7 @@ if (command !== 'help' && !fs.existsSync(inputFile)) {
 
 
 // Step 4: Handle each option
-if (command === 'help') {
+if (option === 'help') {
   console.log(`CarHub - Manage a car concessionnaire`);
   console.log(`Usage: carhub <options> <input_file>`);
   console.log(`Options:
