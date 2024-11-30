@@ -172,7 +172,6 @@ if (command === 'remove') {
       process.exit(0);
     }
  
-    try {
       // Read both files
       const newCars = JSON.parse(fs.readFileSync(fileCars, 'utf-8'));
       const existingCars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
@@ -188,9 +187,6 @@ if (command === 'remove') {
       // Write the merged list back to the input file
       fs.writeFileSync(inputFile, JSON.stringify(mergedCars, null, 2));
       console.log("Cars imported successfully.");
-    } catch (error) {
-      console.log("Error reading or parsing the files:", error.message);
-    }
   }
  
 
@@ -205,12 +201,8 @@ if (command === 'remove') {
  
     // Read the data from the input file
     let cars;
-    try {
-      cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
-    } catch (error) {
-      console.log("Error reading or parsing the file:", error.message);
-      process.exit(0);
-    }
+    cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
+
  
     // Initialize an object to hold the search filters
     const filters = {
@@ -273,12 +265,8 @@ if (command === 'remove') {
  
     // Read the data from the input file
     let cars;
-    try {
-      cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
-    } catch (error) {
-      console.log("Error reading or parsing the file:", error.message);
-      process.exit(0);
-    }
+    cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
+
  
     // Calculate the total inventory value
     const totalValue = cars.reduce((accumulator, car) => {
@@ -291,22 +279,17 @@ if (command === 'remove') {
  
 //identifies the X best-selling cars
 if (command === 'best-selling') {
-  if (process.argv.length < 5) {
+  if (process.argv.length < 4) {
     console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
     process.exit(0);
   }
  
   // Read the data from the input file
   let cars;
-  try {
-    cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
-  } catch (error) {
-    console.log("Error reading or parsing the file:", error.message);
-    process.exit(0);
-  }
+  cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
 
 
-  const numberOfBestSellingCars = parseInt(process.argv[3]);
+  const numberOfBestSellingCars = parseInt(process.argv[2]);
 
 
   // Sort the cars by the number of units sold in descending order

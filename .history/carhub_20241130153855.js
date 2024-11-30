@@ -251,13 +251,13 @@ if (command === 'remove') {
     });
  
 
-    // Display the filtered results in a table
-    const tableData = [
-      ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
-      ...filteredCars.map(car => [car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold])
-    ];
-    const outputTable = table(tableData);
-    console.log(outputTable);
+      // Display the filtered results in a table
+      const tableData = [
+        ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
+        ...filteredCars.map(car => [car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold])
+      ];
+      const outputTable = table(tableData);
+      console.log(outputTable);
     
   }
 
@@ -291,7 +291,7 @@ if (command === 'remove') {
  
 //identifies the X best-selling cars
 if (command === 'best-selling') {
-  if (process.argv.length < 5) {
+  if (process.argv.length < 4) {
     console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
     process.exit(0);
   }
@@ -306,7 +306,7 @@ if (command === 'best-selling') {
   }
 
 
-  const numberOfBestSellingCars = parseInt(process.argv[3]);
+  const numberOfBestSellingCars = parseInt(process.argv[2]);
 
 
   // Sort the cars by the number of units sold in descending order

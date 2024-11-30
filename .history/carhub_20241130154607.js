@@ -306,7 +306,7 @@ if (command === 'best-selling') {
   }
 
 
-  const numberOfBestSellingCars = parseInt(process.argv[3]);
+  const numberOfBestSellingCars = parseInt(process.argv[2]);
 
 
   // Sort the cars by the number of units sold in descending order

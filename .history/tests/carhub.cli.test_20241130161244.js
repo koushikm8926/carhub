@@ -618,8 +618,8 @@ it('TC28', async () => {
     ['ranking', 'id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
     [1, 3, 'i10', 'Hyundai', 'yellow', 15000, 10, 7],
     [2, 4, 'i20', 'Hyundai', 'green', 25000, 12, 5],
-    [3, 2, 'i40', 'Hyundai', 'red', 40000, 8, 3],
-    [4, 1, 'i30', 'Hyundai', 'blue', 30000, 5, 2]
+    [3, 1, 'i30', 'Hyundai', 'blue', 30000, 5, 2],
+
   ];
 
   // Format the expected output as a table

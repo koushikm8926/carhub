@@ -291,6 +291,7 @@ if (command === 'remove') {
  
 //identifies the X best-selling cars
 if (command === 'best-selling') {
+  console.log
   if (process.argv.length < 5) {
     console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
     process.exit(0);
@@ -306,7 +307,7 @@ if (command === 'best-selling') {
   }
 
 
-  const numberOfBestSellingCars = parseInt(process.argv[3]);
+  const numberOfBestSellingCars = parseInt(process.argv[2]);
 
 
   // Sort the cars by the number of units sold in descending order

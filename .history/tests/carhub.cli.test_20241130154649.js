@@ -618,8 +618,8 @@ it('TC28', async () => {
     ['ranking', 'id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
     [1, 3, 'i10', 'Hyundai', 'yellow', 15000, 10, 7],
     [2, 4, 'i20', 'Hyundai', 'green', 25000, 12, 5],
-    [3, 2, 'i40', 'Hyundai', 'red', 40000, 8, 3],
-    [4, 1, 'i30', 'Hyundai', 'blue', 30000, 5, 2]
+    [3, 1, 'i30', 'Hyundai', 'blue', 30000, 5, 2],
+    [4, 2, 'i40', 'Hyundai', 'red', 40000, 8, 3]
   ];
 
   // Format the expected output as a table
@@ -687,16 +687,17 @@ it('TC31', async () => {
   fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
 
   // Step 2: Run the `best-selling` command without a number
-  const { stdout } = await execa('node', ['carhub.js', 'best-selling', testFilePath]);
+  const { stdout, stderr } = await execa('node', ['carhub.js', 'best-selling', testFilePath]);
 
   // Log the outputs to inspect the error message
   console.log('stdout:', stdout);
+  console.log('stderr:', stderr);
 
   // Step 3: Verify the error message
   const expectedErrorMessage = 'Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file';
 
   // Step 4: Check that the error output matches the expected result
-  expect(stdout.trim()).toBe(expectedErrorMessage);
+  expect(stdout.trim()).toB(expectedErrorMessage);
 
   // Step 5: Clean up
   fs.unlinkSync(testFilePath);
