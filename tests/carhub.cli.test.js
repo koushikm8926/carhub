@@ -362,6 +362,14 @@ describe('CLI App', () => {
   fs.unlinkSync(testFilePath);
 });
 
+
+
+
+
+
+
+
+
 it('TC20', async () => {
   // Step 1: Prepare two test JSON files
   const testFilePath = path.resolve(__dirname, 'testFile20.json');
@@ -398,6 +406,13 @@ it('TC20', async () => {
   fs.unlinkSync(testFilePath);
   fs.unlinkSync(toAddFilePath);
 });
+
+
+
+
+
+
+
 
 it('TC21', async () => {
   // Step 1: Prepare two test JSON files
@@ -701,6 +716,44 @@ it('TC31', async () => {
   // Step 5: Clean up
   fs.unlinkSync(testFilePath);
 });
+
+
+
+it('TC32', async () => {
+  // Step 1: Prepare a test JSON file with some data
+  const testFilePath = path.resolve(__dirname, 'testFile32.json');
+  const initialData = [
+    { "id": 1, "model": "ModelA", "brand": "BrandA", "colour": "Red", "price": 20000, "units": 5, "sold": 2 },
+    { "id": 2, "model": "ModelB", "brand": "BrandB", "colour": "Blue", "price": 25000, "units": 3, "sold": 1 },
+    { "id": 3, "model": "ModelC", "brand": "BrandC", "colour": "Green", "price": 30000, "units": 4, "sold": 4 },
+    { "id": 4, "model": "ModelD", "brand": "BrandD", "colour": "Yellow", "price": 35000, "units": 2, "sold": 3 }
+  ];
+  fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
+
+  // Step 2: Run the `best-selling` command with a valid number
+  const numberOfBestSelling = 2;
+  const { stdout } = await execa('node', ['carhub.js', 'best-selling', numberOfBestSelling.toString(), testFilePath]);
+
+  // Log the outputs to inspect
+  console.log('stdout:', stdout);
+
+  // Step 3: Verify the output
+  const expectedOutput = [
+    { "id": 3, "model": "ModelC", "brand": "BrandC", "colour": "Green", "price": 30000, "units": 4, "sold": 4 },
+    { "id": 4, "model": "ModelD", "brand": "BrandD", "colour": "Yellow", "price": 35000, "units": 2, "sold": 3 }
+  ];
+  expect(JSON.parse(stdout.trim())).toEqual(expectedOutput);
+
+  // Step 4: Clean up
+  fs.unlinkSync(testFilePath);
+});
+
+
+
+
+
+
+
 
 
 });
