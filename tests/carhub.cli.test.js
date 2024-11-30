@@ -368,31 +368,26 @@ describe('CLI App', () => {
 
 
 
-
-
 it('TC20', async () => {
-  // Step 1: Prepare two test JSON files
   const testFilePath = path.resolve(__dirname, 'testFile20.json');
   const toAddFilePath = path.resolve(__dirname, 'toAdd20.json');
 
-  
   const initialData = [
     { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 5, "sold": 2 },
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 40000, "units": 8, "sold": 3 }
   ];
   fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
 
-  
   const toAddData = [
-    { "id": 1, "model": "ModelA", "brand": "Toyota", "colour": "green", "price": 25000, "units": 4, "sold": 1 },
-    { "id": 2, "model": "ModelB", "brand": "Nissan", "colour": "black", "price": 35000, "units": 6, "sold": 0 }
+    { "model": "ModelA", "brand": "Toyota", "colour": "green", "price": 25000, "units": 4, "sold": 1 },
+    { "model": "ModelB", "brand": "Nissan", "colour": "black", "price": 35000, "units": 6, "sold": 0 }
   ];
   fs.writeFileSync(toAddFilePath, JSON.stringify(toAddData, null, 2));
 
   // Step 2: Run the `import` command
   await execa('node', ['carhub.js', 'import', toAddFilePath, testFilePath]);
 
- 
+  // Updated expected data after import
   const updatedData = JSON.parse(fs.readFileSync(testFilePath, 'utf-8'));
 
   const resultData = [
@@ -400,7 +395,9 @@ it('TC20', async () => {
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 40000, "units": 8, "sold": 3 },
     { "id": 3, "model": "ModelA", "brand": "Toyota", "colour": "green", "price": 25000, "units": 4, "sold": 1 },
     { "id": 4, "model": "ModelB", "brand": "Nissan", "colour": "black", "price": 35000, "units": 6, "sold": 0 }
-  ]
+  ];
+
+  // Expect updated data to match the result
   expect(updatedData).toEqual(resultData); 
 
   fs.unlinkSync(testFilePath);
