@@ -323,7 +323,10 @@ describe('CLI App', () => {
     
     
     const tableData = [
-      ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold']
+      ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
+      ...[{ "id": 4, "model": "ModelD", "brand": "BMW", "colour": "purple", "price": 28000, "units": 6, "sold": 4 }].map(
+        car => [car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold]
+      )
     ];
     const expectedTable = table(tableData);
     expect(stdout.trim()).toBe(expectedTable.trim());

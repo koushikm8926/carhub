@@ -250,15 +250,18 @@ if (command === 'remove') {
       return matchesModel && matchesBrand && matchesColour && matchesPriceRange;
     });
  
-
-    // Display the filtered results in a table
-    const tableData = [
-      ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
-      ...filteredCars.map(car => [car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold])
-    ];
-    const outputTable = table(tableData);
-    console.log(outputTable);
-    
+    // If there are no matching results, display a message
+    if (filteredCars.length === 0) {
+      console.log("No cars found matching the search criteria.");
+    } else {
+      // Display the filtered results in a table
+      const tableData = [
+        ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
+        ...filteredCars.map(car => [car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold])
+      ];
+      const outputTable = table(tableData);
+      console.log(outputTable);
+    }
   }
 
 

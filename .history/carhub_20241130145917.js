@@ -251,13 +251,13 @@ if (command === 'remove') {
     });
  
 
-    // Display the filtered results in a table
-    const tableData = [
-      ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
-      ...filteredCars.map(car => [car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold])
-    ];
-    const outputTable = table(tableData);
-    console.log(outputTable);
+      // Display the filtered results in a table
+      const tableData = [
+        ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
+        ...filteredCars.map(car => [car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold])
+      ];
+      const outputTable = table(tableData);
+      console.log(outputTable);
     
   }
 

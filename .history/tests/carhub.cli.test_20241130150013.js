@@ -312,7 +312,7 @@ describe('CLI App', () => {
     // Step 1: Prepare a test JSON file
     const testFilePath = path.resolve(__dirname, 'test_cars18.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BMW", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
-      { "id": 4, "model": "ModelD", "brand": "BMW", "colour": "white", "price": 28000, "units": 6, "sold": 4 },
+      { "id": 4, "model": "ModelD", "brand": "BMW", "colour": "purple", "price": 28000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 },
       { "id": 7, "model": "Murcielago", "brand": "Lamborghini", "colour": "black", "price": 70000, "units": 2, "sold": 1 }
     ];
@@ -323,7 +323,10 @@ describe('CLI App', () => {
     
     
     const tableData = [
-      ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold']
+      ['id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
+      ...[{ "id": 4, "model": "ModelD", "brand": "BMW", "colour": "purple", "price": 28000, "units": 6, "sold": 4 }].map(
+        car => [car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold]
+      )
     ];
     const expectedTable = table(tableData);
     expect(stdout.trim()).toBe(expectedTable.trim());
