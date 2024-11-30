@@ -306,40 +306,67 @@ if (command === 'remove') {
     // Display the total inventory value
     console.log(`Total inventory value: ${totalValue}€`);
   }
- 
-//identifies the X best-selling cars
-if (command === 'best-selling') {
-  if (process.argv.length < 5) {
-    console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
-    process.exit(0);
-  }
- 
-  // Read the data from the input file
-  let cars;
-  try {
-    cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
-  } catch (error) {
-    console.log("Error reading or parsing the file:", error.message);
-    process.exit(0);
-  }
 
 
-  const numberOfBestSellingCars = parseInt(process.argv[3]);
 
 
-  // Sort the cars by the number of units sold in descending order
-  const bestSellingCars = cars.sort((a, b) => b.sold - a.sold).slice(0, numberOfBestSellingCars);
+  if (command === 'best-selling') {
+    // Step 1: Check if the correct number of arguments is provided
+    if (process.argv.length < 4) {
+        console.log('Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file');
+        process.exit(0);  // Exit if arguments are insufficient
+    }
 
-  // Print each car's details
-  const tableData = [
-    ['ranking', 'id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
-    ...bestSellingCars.map((car, index) => [index + 1, car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold])
-  ];
-  const outputTable = table(tableData);
-  console.log(outputTable);
+    // Step 2: Parse the ranking argument
+    const ranking = parseInt(process.argv[3], 10); // Get ranking value from command line argument
+    const fileCars = process.argv[4];  // Get the file path from command line argument
 
+    // Step 3: Check if the ranking value is valid
+    if (isNaN(ranking) || ranking <= 0) {
+        console.log('Error: Invalid ranking value.');
+        process.exit(0);  // Exit if the ranking is invalid
+    }
 
+    // Step 4: Check if the file exists
+    if (!fs.existsSync(fileCars)) {
+        console.log(`Error: The file ${fileCars} does not exist.`);
+        process.exit(0);  // Exit if the file doesn't exist
+    }
+
+    // Step 5: Read and process the file data (assuming it's in JSON format)
+    try {
+        const carsData = JSON.parse(fs.readFileSync(fileCars, 'utf-8'));
+        if (!Array.isArray(carsData)) {
+            console.log("Error: The file does not contain valid car data.");
+            process.exit(0);  // Exit if the file data is invalid
+        }
+
+        // Sort cars based on the best-selling criteria (e.g., by number of units sold)
+        const sortedCars = carsData.sort((a, b) => b.sold - a.sold);
+
+        // Output the top 'ranking' cars
+        const topCars = sortedCars.slice(0, ranking);
+        const output = table([
+            [`ranking`, `id`, `model`, `brand`, `colour`, `price`, `units`, `sold`],
+            ...topCars.map((car, index) => [
+                index + 1,
+                car.id,
+                car.model,
+                car.brand,
+                car.colour,
+                car.price,
+                car.units,
+                car.sold
+            ])
+        ]);
+
+        console.log(output);
+
+    } catch (error) {
+        console.log("Error reading or parsing the file:", error.message);
+    }
 }
+
 
 
 process.exit(0);
