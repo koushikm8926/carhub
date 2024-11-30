@@ -18,6 +18,7 @@
     "sold": 3
   },
   {
+    "id": 2,
     "model": "i30",
     "brand": "Hyundai",
     "colour": "blue",
@@ -26,6 +27,7 @@
     "sold": 1
   },
   {
+    "id": 3,
     "model": "ModelA",
     "brand": "Toyota",
     "colour": "green",

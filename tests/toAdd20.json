@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "model": "ModelA",
+    "brand": "Toyota",
+    "colour": "green",
+    "price": 25000,
+    "units": 4,
+    "sold": 1
+  },
+  {
+    "id": 2,
+    "model": "ModelB",
+    "brand": "Nissan",
+    "colour": "black",
+    "price": 35000,
+    "units": 6,
+    "sold": 0
+  }
+]
