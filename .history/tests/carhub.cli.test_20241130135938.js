@@ -49,7 +49,7 @@ describe('CLI App', () => {
 
   it('TC6', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars6.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [
       { "id": 3, "model": "ModelC", "brand": "BrandZ", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
       { "id": 4, "model": "ModelD", "brand": "BrandA", "colour": "White", "price": 28000, "units": 6, "sold": 4 }
@@ -70,7 +70,7 @@ describe('CLI App', () => {
 
   it('TC7', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars7.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [];
     fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
   
@@ -88,7 +88,7 @@ describe('CLI App', () => {
 
   it('TC8', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars8.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BrandZ", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
       { "id": 4, "model": "ModelD", "brand": "BrandA", "colour": "White", "price": 28000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 }
@@ -116,7 +116,7 @@ describe('CLI App', () => {
 
   it('TC10', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars10.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BrandZ", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
       { "id": 4, "model": "ModelD", "brand": "BrandA", "colour": "White", "price": 28000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 }
@@ -138,7 +138,7 @@ describe('CLI App', () => {
 
   it('TC11', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars11.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BrandZ", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
       { "id": 4, "model": "ModelD", "brand": "BrandA", "colour": "White", "price": 28000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 }
@@ -155,7 +155,7 @@ describe('CLI App', () => {
 
   it('TC12', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars12.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BrandZ", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
       { "id": 4, "model": "ModelD", "brand": "BrandA", "colour": "White", "price": 28000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 }
@@ -179,7 +179,7 @@ describe('CLI App', () => {
 
   it('TC13', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars13.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [];
     fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
   
@@ -200,7 +200,7 @@ describe('CLI App', () => {
 
   it('TC14', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars14.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BrandZ", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
       { "id": 4, "model": "ModelD", "brand": "BrandA", "colour": "White", "price": 28000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 },
@@ -225,9 +225,9 @@ describe('CLI App', () => {
     fs.unlinkSync(testFilePath);
   });
 
-  it('TC15', async () => {
+  it('TC14', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars15.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BMW", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
       { "id": 4, "model": "ModelD", "brand": "BMW", "colour": "White", "price": 28000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 },
@@ -254,9 +254,9 @@ describe('CLI App', () => {
     fs.unlinkSync(testFilePath);
   });
 
-  it('TC16', async () => {
+  it('TC15', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars16.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BMW", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
       { "id": 4, "model": "ModelD", "brand": "BMW", "colour": "purple", "price": 28000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 },
@@ -281,9 +281,9 @@ describe('CLI App', () => {
     fs.unlinkSync(testFilePath);
   });
 
-  it('TC17', async () => {
+  it('TC16', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars17.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BMW", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
       { "id": 4, "model": "ModelD", "brand": "BMW", "colour": "purple", "price": 18000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 },
@@ -308,11 +308,11 @@ describe('CLI App', () => {
     fs.unlinkSync(testFilePath);
   });
 
-  it('TC18', async () => {
+  it('TC17', async () => {
     // Step 1: Prepare a test JSON file
-    const testFilePath = path.resolve(__dirname, 'test_cars18.json');
+    const testFilePath = path.resolve(__dirname, 'test_cars.json');
     const initialData = [{ "id": 3, "model": "ModelC", "brand": "BMW", "colour": "Black", "price": 35000, "units": 8, "sold": 2 },
-      { "id": 4, "model": "ModelD", "brand": "BMW", "colour": "white", "price": 28000, "units": 6, "sold": 4 },
+      { "id": 4, "model": "ModelD", "brand": "BMW", "colour": "purple", "price": 28000, "units": 6, "sold": 4 },
       { "id": 6, "model": "Aventador", "brand": "Lamborghini", "colour": "yellow", "price": 80000, "units": 3, "sold": 0 },
       { "id": 7, "model": "Murcielago", "brand": "Lamborghini", "colour": "black", "price": 70000, "units": 2, "sold": 1 }
     ];
@@ -337,7 +337,7 @@ describe('CLI App', () => {
 
   it('TC19', async () => {
   // Step 1: Prepare a test JSON file
-  const testFilePath = path.resolve(__dirname, 'testFile19.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
   const initialData = [
     { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 5, "sold": 2 },
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 40000, "units": 8, "sold": 3 },
@@ -367,8 +367,8 @@ describe('CLI App', () => {
 
 it('TC20', async () => {
   // Step 1: Prepare two test JSON files
-  const testFilePath = path.resolve(__dirname, 'testFile20.json');
-  const toAddFilePath = path.resolve(__dirname, 'toAdd20.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
+  const toAddFilePath = path.resolve(__dirname, 'toAdd.json');
 
   
   const initialData = [
@@ -404,8 +404,8 @@ it('TC20', async () => {
 
 it('TC21', async () => {
   // Step 1: Prepare two test JSON files
-  const testFilePath = path.resolve(__dirname, 'testFile21.json');
-  const toAddFilePath = path.resolve(__dirname, 'toAdd21.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
+  const toAddFilePath = path.resolve(__dirname, 'toAdd.json');
 
   // Initial data for testFile.json
   const initialData = [
@@ -453,8 +453,8 @@ it('TC21', async () => {
 
 it('TC22', async () => {
   // Step 1: Prepare two test JSON files
-  const testFilePath = path.resolve(__dirname, 'testFile22.json');
-  const toAddFilePath = path.resolve(__dirname, 'toAdd22.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
+  const toAddFilePath = path.resolve(__dirname, 'toAdd.json');
 
   // Initial data for testFile.json (cars already populated)
   const initialData = [
@@ -484,7 +484,7 @@ it('TC22', async () => {
 
 it('TC23', async () => {
   // Step 1: Prepare a test JSON file
-  const testFilePath = path.resolve(__dirname, 'testFile23.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
 
  
   const initialData = [
@@ -507,7 +507,7 @@ it('TC23', async () => {
 
 it('TC24', async () => {
   // Step 1: Prepare a test JSON file with cars
-  const testFilePath = path.resolve(__dirname, 'testFile24.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
 
   // Initial data for testFile.json (cars with multiple available units)
   const initialData = [
@@ -532,7 +532,7 @@ it('TC24', async () => {
 
 it('TC25', async () => {
   // Step 1: Prepare a test JSON file with cars that each have one unit available
-  const testFilePath = path.resolve(__dirname, 'testFile25.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
   const initialData = [
     { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 5000, "units": 1, "sold": 0 },
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 15000, "units": 1, "sold": 0 },
@@ -557,7 +557,7 @@ it('TC25', async () => {
 
 it('TC26', async () => {
   // Step 1: Prepare an empty test JSON file
-  const testFilePath = path.resolve(__dirname, 'testFile26.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
 
   
   const initialData = [];
@@ -578,7 +578,7 @@ it('TC26', async () => {
 
 it('TC27', async () => {
   // Step 1: Prepare a test JSON file
-  const testFilePath = path.resolve(__dirname, 'testFile27.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
   const initialData = [
     { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 5, "sold": 2 },
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 40000, "units": 8, "sold": 3 },
@@ -610,7 +610,7 @@ it('TC27', async () => {
 
 it('TC28', async () => {
   // Step 1: Prepare a test JSON file with 4 cars
-  const testFilePath = path.resolve(__dirname, 'testFile28.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
   const initialData = [
     { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 5, "sold": 2 },
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 40000, "units": 8, "sold": 3 },
@@ -643,7 +643,7 @@ it('TC28', async () => {
 
 it('TC29', async () => {
   // Step 1: Prepare an empty test JSON file
-  const testFilePath = path.resolve(__dirname, 'testFile29.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
   fs.writeFileSync(testFilePath, JSON.stringify([]));  // Empty file
 
   // Step 2: Run the `best-selling` command
@@ -662,7 +662,7 @@ it('TC29', async () => {
 
 it('TC30', async () => {
   // Step 1: Prepare a test JSON file with some data
-  const testFilePath = path.resolve(__dirname, 'testFile30.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
   const initialData = [
     { "id": 1, "model": "ModelA", "brand": "BrandA", "colour": "Red", "price": 20000, "units": 5, "sold": 2 },
     { "id": 2, "model": "ModelB", "brand": "BrandB", "colour": "Blue", "price": 25000, "units": 3, "sold": 1 }
@@ -684,7 +684,7 @@ it('TC30', async () => {
 
 it('TC31', async () => {
   // Step 1: Prepare a test JSON file with some data
-  const testFilePath = path.resolve(__dirname, 'testFile31.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
   const initialData = [
     { "id": 1, "model": "ModelA", "brand": "BrandA", "colour": "Red", "price": 20000, "units": 5, "sold": 2 },
     { "id": 2, "model": "ModelB", "brand": "BrandB", "colour": "Blue", "price": 25000, "units": 3, "sold": 1 }

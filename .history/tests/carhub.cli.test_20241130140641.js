@@ -368,7 +368,7 @@ describe('CLI App', () => {
 it('TC20', async () => {
   // Step 1: Prepare two test JSON files
   const testFilePath = path.resolve(__dirname, 'testFile20.json');
-  const toAddFilePath = path.resolve(__dirname, 'toAdd20.json');
+  const toAddFilePath = path.resolve(__dirname, 'toAdd.json');
 
   
   const initialData = [
@@ -405,7 +405,7 @@ it('TC20', async () => {
 it('TC21', async () => {
   // Step 1: Prepare two test JSON files
   const testFilePath = path.resolve(__dirname, 'testFile21.json');
-  const toAddFilePath = path.resolve(__dirname, 'toAdd21.json');
+  const toAddFilePath = path.resolve(__dirname, 'toAdd.json');
 
   // Initial data for testFile.json
   const initialData = [
@@ -662,7 +662,7 @@ it('TC29', async () => {
 
 it('TC30', async () => {
   // Step 1: Prepare a test JSON file with some data
-  const testFilePath = path.resolve(__dirname, 'testFile30.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
   const initialData = [
     { "id": 1, "model": "ModelA", "brand": "BrandA", "colour": "Red", "price": 20000, "units": 5, "sold": 2 },
     { "id": 2, "model": "ModelB", "brand": "BrandB", "colour": "Blue", "price": 25000, "units": 3, "sold": 1 }
@@ -684,7 +684,7 @@ it('TC30', async () => {
 
 it('TC31', async () => {
   // Step 1: Prepare a test JSON file with some data
-  const testFilePath = path.resolve(__dirname, 'testFile31.json');
+  const testFilePath = path.resolve(__dirname, 'testFile.json');
   const initialData = [
     { "id": 1, "model": "ModelA", "brand": "BrandA", "colour": "Red", "price": 20000, "units": 5, "sold": 2 },
     { "id": 2, "model": "ModelB", "brand": "BrandB", "colour": "Blue", "price": 25000, "units": 3, "sold": 1 }

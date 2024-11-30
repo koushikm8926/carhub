@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "model": "i30",
+    "brand": "Hyundai",
+    "colour": "blue",
+    "price": 30000,
+    "units": 5,
+    "sold": 2
+  },
+  {
+    "id": 2,
+    "model": "i40",
+    "brand": "Hyundai",
+    "colour": "red",
+    "price": 40000,
+    "units": 8,
+    "sold": 3
+  },
+  {
+    "model": "i30",
+    "brand": "Hyundai",
+    "colour": "blue",
+    "price": 30000,
+    "units": 3,
+    "sold": 1
+  },
+  {
+    "model": "ModelA",
+    "brand": "Toyota",
+    "colour": "green",
+    "price": 25000,
+    "units": 4,
+    "sold": 1
+  }
+]

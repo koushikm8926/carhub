@@ -405,7 +405,7 @@ it('TC20', async () => {
 it('TC21', async () => {
   // Step 1: Prepare two test JSON files
   const testFilePath = path.resolve(__dirname, 'testFile21.json');
-  const toAddFilePath = path.resolve(__dirname, 'toAdd21.json');
+  const toAddFilePath = path.resolve(__dirname, 'toAdd.json');
 
   // Initial data for testFile.json
   const initialData = [
