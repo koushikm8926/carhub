@@ -751,37 +751,9 @@ it('TC32', async () => {
 
 
 
-it('TC33', async () => {
-  // Step 1: Prepare a test JSON file with some data
-  const testFilePath = path.resolve(__dirname, 'testFile33.json');
-  const initialData = [
-    { "id": 1, "model": "ModelA", "brand": "BrandA", "colour": "Red", "price": 20000, "units": 5, "sold": 2 },
-    { "id": 2, "model": "ModelB", "brand": "BrandB", "colour": "Blue", "price": 25000, "units": 3, "sold": 1 },
-    { "id": 3, "model": "ModelC", "brand": "BrandC", "colour": "Green", "price": 30000, "units": 4, "sold": 4 },
-    { "id": 4, "model": "ModelD", "brand": "BrandD", "colour": "Yellow", "price": 35000, "units": 2, "sold": 3 }
-  ];
-  fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
-
-  // Step 2: Run the `best-selling` command with an invalid number (negative)
-  const numberOfBestSelling = -2;
-  const { stderr } = await execa('node', ['carhub.js', 'best-selling', numberOfBestSelling.toString(), testFilePath]);
-
-  // Log the outputs to inspect the error
-  console.log('stderr:', stderr);
-
-  // Step 3: Verify the error message
-  const expectedErrorMessage = 'Error: The number of best-selling cars must be a positive integer.';
-  expect(stderr.trim()).toBe(expectedErrorMessage);
-
-  // Step 4: Clean up
-  fs.unlinkSync(testFilePath);
-});
-
-
-
 //Test Case for More Best-Selling Cars Than Available
 
-it('TC34', async () => {
+it('TC33', async () => {
   // Step 1: Prepare a test JSON file with some data
   const testFilePath = path.resolve(__dirname, 'testFile34.json');
   const initialData = [
