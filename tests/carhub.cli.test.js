@@ -365,91 +365,93 @@ describe('CLI App', () => {
 
 
 
-
-
-
 it('TC20', async () => {
   const testFilePath = path.resolve(__dirname, 'testFile20.json');
   const toAddFilePath = path.resolve(__dirname, 'toAdd20.json');
 
+  // Initial cars data in testFile
   const initialData = [
     { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 5, "sold": 2 },
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 40000, "units": 8, "sold": 3 }
   ];
   fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
 
+  // Cars to be added in toAdd.json
   const toAddData = [
     { "model": "ModelA", "brand": "Toyota", "colour": "green", "price": 25000, "units": 4, "sold": 1 },
     { "model": "ModelB", "brand": "Nissan", "colour": "black", "price": 35000, "units": 6, "sold": 0 }
   ];
   fs.writeFileSync(toAddFilePath, JSON.stringify(toAddData, null, 2));
 
-  // Step 2: Run the `import` command
+  // Run the import command (assuming the merging happens correctly in carhub.js)
   await execa('node', ['carhub.js', 'import', toAddFilePath, testFilePath]);
 
-  // Updated expected data after import
+  // Read updated data from the file
   const updatedData = JSON.parse(fs.readFileSync(testFilePath, 'utf-8'));
 
-  const resultData = [
+  // Manually merge the cars based on the model (this simulates what your import script should do)
+  const expectedData = [
     { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 5, "sold": 2 },
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 40000, "units": 8, "sold": 3 },
     { "id": 3, "model": "ModelA", "brand": "Toyota", "colour": "green", "price": 25000, "units": 4, "sold": 1 },
     { "id": 4, "model": "ModelB", "brand": "Nissan", "colour": "black", "price": 35000, "units": 6, "sold": 0 }
   ];
 
-  // Expect updated data to match the result
-  expect(updatedData).toEqual(resultData); 
+  // Ensure the data matches the expected format
+  expect(updatedData).toEqual(expectedData);
 
+  // Clean up by deleting the test files
   fs.unlinkSync(testFilePath);
   fs.unlinkSync(toAddFilePath);
 });
 
 
-
-
-
-
-
-
 it('TC21', async () => {
-  // Step 1: Prepare two test JSON files
   const testFilePath = path.resolve(__dirname, 'testFile21.json');
   const toAddFilePath = path.resolve(__dirname, 'toAdd21.json');
 
-  // Initial data for testFile.json
   const initialData = [
     { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 5, "sold": 2 },
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 40000, "units": 8, "sold": 3 }
   ];
   fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
 
-  // Data for toAdd.json (new cars to be added)
   const toAddData = [
-    { "id": 2, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 3, "sold": 1 }, // Same car as in testFile.json
+    { "id": 2, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 3, "sold": 1 },
     { "id": 3, "model": "ModelA", "brand": "Toyota", "colour": "green", "price": 25000, "units": 4, "sold": 1 }
   ];
   fs.writeFileSync(toAddFilePath, JSON.stringify(toAddData, null, 2));
 
-  // Step 2: Run the `import` command
+  // Run the `import` command
   await execa('node', ['carhub.js', 'import', toAddFilePath, testFilePath]);
 
-  
   const updatedData = JSON.parse(fs.readFileSync(testFilePath, 'utf-8'));
 
-
   const expectedData = [
-    { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 8, "sold": 3 }, // Merged car
+    { "id": 1, "model": "i30", "brand": "Hyundai", "colour": "blue", "price": 30000, "units": 8, "sold": 3 },
     { "id": 2, "model": "i40", "brand": "Hyundai", "colour": "red", "price": 40000, "units": 8, "sold": 3 },
     { "id": 3, "model": "ModelA", "brand": "Toyota", "colour": "green", "price": 25000, "units": 4, "sold": 1 }
   ];
 
-
   expect(updatedData).toEqual(expectedData);
-
 
   fs.unlinkSync(testFilePath);
   fs.unlinkSync(toAddFilePath);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 it('TC22', async () => {
   // Step 1: Prepare two test JSON files

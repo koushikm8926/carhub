@@ -153,59 +153,63 @@ if (command === 'remove') {
  
 
 
-
-
-  //Marge two files new_cars.json data to cars.json file
-
-
   if (command === 'import') {
     if (process.argv.length < 5) {
-      console.log("Error: Insufficient arguments. Usage: carhub import <file_cars> <input_file>");
-      process.exit(0);
+        console.log("Error: Insufficient arguments. Usage: carhub import <file_cars> <input_file>");
+        process.exit(0);
     }
-  
+
     const fileCars = process.argv[3];  // New cars file
     const inputFile = process.argv[4]; // Existing cars file
-  
+
     // Check if both files exist
     if (!fs.existsSync(fileCars)) {
-      console.log(`Error: The file ${fileCars} does not exist.`);
-      process.exit(0);
-    }
-  
-    if (!fs.existsSync(inputFile)) {
-      console.log(`Error: The file ${inputFile} does not exist.`);
-      process.exit(0);
-    }
-  
-    try {
-      // Read both files
-      const newCars = JSON.parse(fs.readFileSync(fileCars, 'utf-8'));
-      const existingCars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
-  
-      if (!Array.isArray(newCars) || !Array.isArray(existingCars)) {
-        console.log("Error: The provided files do not contain valid car data.");
+        console.log(`Error: The file ${fileCars} does not exist.`);
         process.exit(0);
-      }
-  
-      // Ensure unique IDs by checking existing car IDs
-      const maxId = existingCars.reduce((max, car) => Math.max(max, car.id), 0);
-  
-      newCars.forEach((newCar, index) => {
-        // Assign unique IDs for new cars based on the highest existing ID
-        newCar.id = maxId + index + 1; // Increment IDs for new cars
-      });
-  
-      // Merge the cars (concatenate arrays)
-      const mergedCars = existingCars.concat(newCars);
-  
-      // Write the merged list back to the input file
-      fs.writeFileSync(inputFile, JSON.stringify(mergedCars, null, 2));
-      console.log("Cars imported successfully.");
-    } catch (error) {
-      console.log("Error reading or parsing the files:", error.message);
     }
-  }
+
+    if (!fs.existsSync(inputFile)) {
+        console.log(`Error: The file ${inputFile} does not exist.`);
+        process.exit(0);
+    }
+
+    try {
+        // Read both files
+        const newCars = JSON.parse(fs.readFileSync(fileCars, 'utf-8'));
+        const existingCars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
+
+        if (!Array.isArray(newCars) || !Array.isArray(existingCars)) {
+            console.log("Error: The provided files do not contain valid car data.");
+            process.exit(0);
+        }
+
+        // Find the highest ID in existing cars to assign to new cars
+        let maxId = Math.max(...existingCars.map(car => car.id), 0);
+
+        // Merge the cars: Update existing cars or add new cars
+        newCars.forEach(newCar => {
+            const index = existingCars.findIndex(car => car.model === newCar.model && car.brand === newCar.brand);
+            if (index !== -1) {
+                // If the car exists, merge `sold` and `units`
+                existingCars[index].units += newCar.units;  // Merge the units
+                existingCars[index].sold += newCar.sold;    // Merge the sold count
+            } else {
+                // If the car doesn't exist, add it with a new ID
+                maxId++; // Increment the ID for new cars
+                existingCars.push({ ...newCar, id: maxId }); // Assign new ID to new cars
+            }
+        });
+
+        // Write the merged list back to the input file
+        fs.writeFileSync(inputFile, JSON.stringify(existingCars, null, 2));
+
+        console.log("Cars imported and merged successfully.");
+    } catch (error) {
+        console.log("Error reading or parsing the files:", error.message);
+    }
+}
+
+
   
 
 

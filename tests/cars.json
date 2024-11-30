@@ -14,8 +14,8 @@
     "brand": "BrandZ",
     "colour": "Black",
     "price": 35000,
-    "units": 8,
-    "sold": 7
+    "units": 16,
+    "sold": null
   },
   {
     "id": 4,
@@ -23,8 +23,8 @@
     "brand": "BrandA",
     "colour": "White",
     "price": 28000,
-    "units": 6,
-    "sold": 15
+    "units": 12,
+    "sold": null
   },
   {
     "model": "i30",
