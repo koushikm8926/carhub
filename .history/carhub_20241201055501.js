@@ -167,6 +167,11 @@ if (command === 'remove') {
         const newCars = JSON.parse(fs.readFileSync(fileCars, 'utf-8'));
         const existingCars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
 
+        // if (!Array.isArray(newCars) || !Array.isArray(existingCars)) {
+        //     console.log("Error: The provided files do not contain valid car data.");
+        //     process.exit(0);
+        // }
+
         // Find the highest ID in existing cars to assign to new cars
         let maxId = Math.max(...existingCars.map(car => car.id), 0);
 
