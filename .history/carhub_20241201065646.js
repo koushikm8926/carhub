@@ -294,12 +294,12 @@ if (command === 'remove') {
 
     const numberOfBestSellingCars = parseInt(process.argv[3]);
 
-    let bestSellingCars = [];
-
-    if (numberOfBestSellingCars >= 0) {
-      // Sort the cars by the number of units sold in descending order
-      bestSellingCars = cars.sort((a, b) => b.sold - a.sold).slice(0, numberOfBestSellingCars);
+    if (numberOfBestSellingCars <= 0) {
+      const best
     }
+    // Sort the cars by the number of units sold in descending order
+    const bestSellingCars = cars.sort((a, b) => b.sold - a.sold).slice(0, numberOfBestSellingCars);
+
 
     // Print each car's details
     const tableData = [

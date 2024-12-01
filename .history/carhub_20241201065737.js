@@ -294,7 +294,7 @@ if (command === 'remove') {
 
     const numberOfBestSellingCars = parseInt(process.argv[3]);
 
-    let bestSellingCars = [];
+    const bestSellingCars = [];
 
     if (numberOfBestSellingCars >= 0) {
       // Sort the cars by the number of units sold in descending order
