@@ -258,6 +258,11 @@ if (command === 'remove') {
  
 //total inventry value
   if (command === 'total') {
+    if (process.argv.length < 4) {
+      console.log("Error: Insufficient arguments. Usage: carhub total input_file");
+      process.exit(0);
+    }
+ 
  
     // Read the data from the input file
     let cars;

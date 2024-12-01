@@ -259,6 +259,7 @@ if (command === 'remove') {
 //total inventry value
   if (command === 'total') {
  
+ 
     // Read the data from the input file
     let cars;
     try {
