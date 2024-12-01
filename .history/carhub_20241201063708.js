@@ -136,6 +136,7 @@ if (command === 'remove') {
  
     // Find the car with the given ID
     const carIndex = cars.findIndex(car => car.id === id);
+
  
     // Remove the car from the array
     const removedCar = cars.splice(carIndex, 1);
