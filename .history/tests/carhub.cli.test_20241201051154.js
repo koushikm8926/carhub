@@ -666,14 +666,25 @@ it('TC30', async () => {
   const { stdout } = await execa('node', ['carhub.js', 'best-selling', '-1', testFilePath]);
 
   // Adjust the expected output to match the error message
-  const expectedOutput = table([
-    [`ranking`, `id`, `model`, `brand`, `colour`, `price`, `units`, `sold`]
-  ]);
+  const expectedOutput = `Error: Invalid ranking value.`;
 
   expect(stdout.trim()).toBe(expectedOutput.trim());
 
   // Clean up by deleting the test file
   fs.unlinkSync(testFilePath);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });

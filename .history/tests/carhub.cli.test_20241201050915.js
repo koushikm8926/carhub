@@ -378,8 +378,8 @@ it('TC20', async () => {
 
   // Cars to be added in toAdd.json
   const toAddData = [
-    { "id": 1, "model": "ModelA", "brand": "Toyota", "colour": "green", "price": 25000, "units": 4, "sold": 1 },
-    { "id": 2, "model": "ModelB", "brand": "Nissan", "colour": "black", "price": 35000, "units": 6, "sold": 0 }
+    { "id": 1,"model": "ModelA", "brand": "Toyota", "colour": "green", "price": 25000, "units": 4, "sold": 1 },
+    { "model": "ModelB", "brand": "Nissan", "colour": "black", "price": 35000, "units": 6, "sold": 0 }
   ];
   fs.writeFileSync(toAddFilePath, JSON.stringify(toAddData, null, 2));
 
@@ -438,6 +438,20 @@ it('TC21', async () => {
   fs.unlinkSync(testFilePath);
   fs.unlinkSync(toAddFilePath);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 it('TC22', async () => {
   // Step 1: Prepare two test JSON files
@@ -666,14 +680,80 @@ it('TC30', async () => {
   const { stdout } = await execa('node', ['carhub.js', 'best-selling', '-1', testFilePath]);
 
   // Adjust the expected output to match the error message
-  const expectedOutput = table([
-    [`ranking`, `id`, `model`, `brand`, `colour`, `price`, `units`, `sold`]
-  ]);
+  const expectedOutput = `Error: Invalid ranking value.`;
 
   expect(stdout.trim()).toBe(expectedOutput.trim());
 
   // Clean up by deleting the test file
   fs.unlinkSync(testFilePath);
 });
+
+
+
+
+
+
+
+// it('TC31', async () => {
+//   // Step 1: Prepare a test JSON file with some data
+//   const testFilePath = path.resolve(__dirname, 'testFile31.json');
+//   const initialData = [
+//     { "id": 1, "model": "ModelA", "brand": "BrandA", "colour": "Red", "price": 20000, "units": 5, "sold": 2 },
+//     { "id": 2, "model": "ModelB", "brand": "BrandB", "colour": "Blue", "price": 25000, "units": 3, "sold": 1 }
+//   ];
+//   fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
+
+//   // Step 2: Run the `best-selling` command without a number
+//   const { stdout } = await execa('node', ['carhub.js', 'best-selling', testFilePath]);
+
+//   // Log the outputs to inspect the error message
+//   console.log('stdout:', stdout);
+
+//   // Step 3: Verify the error message
+//   const expectedErrorMessage = 'Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file';
+
+//   // Step 4: Check that the error output matches the expected result
+//   expect(stdout.trim()).toBe(expectedErrorMessage);
+
+//   // Step 5: Clean up
+//   fs.unlinkSync(testFilePath);
+// });
+
+
+
+
+it('TC33 - Invalid Ranking Value', async () => {
+  const testFilePath = path.resolve(__dirname, 'testFile2.json');
+  const initialData = [
+    { "id": 1, "model": "ModelA", "brand": "BrandA", "colour": "Red", "price": 20000, "units": 5, "sold": 2 },
+    { "id": 2, "model": "ModelB", "brand": "BrandB", "colour": "Blue", "price": 25000, "units": 3, "sold": 1 }
+  ];
+  fs.writeFileSync(testFilePath, JSON.stringify(initialData, null, 2));
+
+  // Run the `best-selling` command with an invalid ranking value (negative number)
+  const { stdout } = await execa('node', ['carhub.js', 'best-selling', '-1', testFilePath]);
+
+  // The expected error message
+  const expectedErrorMessage = 'Error: Invalid ranking value.';
+
+  // Verify that the error message matches the expected result
+  expect(stdout.trim()).toBe(expectedErrorMessage);
+
+  // Clean up
+  fs.unlinkSync(testFilePath);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });

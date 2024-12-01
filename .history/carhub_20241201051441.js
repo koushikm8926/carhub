@@ -188,8 +188,7 @@ if (command === 'remove') {
 
         // Merge the cars: Update existing cars or add new cars
         newCars.forEach(newCar => {
-            const index = existingCars.findIndex(car => car.model === newCar.model && car.brand === newCar.brand
-                && car.colour === newCar.colour && car.price === newCar.price);
+            const index = existingCars.findIndex(car => car.model === newCar.model && car.brand === newCar.brand);
             if (index !== -1) {
                 // If the car exists, merge `sold` and `units`
                 existingCars[index].units += newCar.units;  // Merge the units
@@ -328,7 +327,7 @@ if (command === 'remove') {
     }
 
 
-    const numberOfBestSellingCars = parseInt(process.argv[3]);
+    const numberOfBestSellingCars = parseInt(process.argv[2]);
 
 
     // Sort the cars by the number of units sold in descending order

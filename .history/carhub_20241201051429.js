@@ -188,8 +188,7 @@ if (command === 'remove') {
 
         // Merge the cars: Update existing cars or add new cars
         newCars.forEach(newCar => {
-            const index = existingCars.findIndex(car => car.model === newCar.model && car.brand === newCar.brand
-                && car.colour === newCar.colour && car.price === newCar.price);
+            const index = existingCars.findIndex(car => car.model === newCar.model && car.brand === newCar.brand);
             if (index !== -1) {
                 // If the car exists, merge `sold` and `units`
                 existingCars[index].units += newCar.units;  // Merge the units
@@ -311,37 +310,37 @@ if (command === 'remove') {
 
 
 
-  //identifies the X best-selling cars
-  if (command === 'best-selling') {
-    if (process.argv.length < 5) {
-      console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
-      process.exit(0);
-    }
-  
-    // Read the data from the input file
-    let cars;
-    try {
-      cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
-    } catch (error) {
-      console.log("Error reading or parsing the file:", error.message);
-      process.exit(0);
-    }
+//identifies the X best-selling cars
+if (command === 'best-selling') {
+  if (process.argv.length < 4) {
+    console.log("Error: Insufficient arguments. Usage: carhub best-selling <number of best-selling cars> input_file");
+    process.exit(0);
+  }
+ 
+  // Read the data from the input file
+  let cars;
+  try {
+    cars = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
+  } catch (error) {
+    console.log("Error reading or parsing the file:", error.message);
+    process.exit(0);
+  }
 
 
-    const numberOfBestSellingCars = parseInt(process.argv[3]);
+  const numberOfBestSellingCars = parseInt(process.argv[2]);
 
 
-    // Sort the cars by the number of units sold in descending order
-    const bestSellingCars = cars.sort((a, b) => b.sold - a.sold).slice(0, numberOfBestSellingCars);
+  // Sort the cars by the number of units sold in descending order
+  const bestSellingCars = cars.sort((a, b) => b.sold - a.sold).slice(0, numberOfBestSellingCars);
 
 
-    // Print each car's details
-    const tableData = [
-      ['ranking', 'id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
-      ...bestSellingCars.map((car, index) => [index + 1, car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold])
-    ];
-    const outputTable = table(tableData);
-    console.log(outputTable);
+  // Print each car's details
+  const tableData = [
+    ['ranking', 'id', 'model', 'brand', 'colour', 'price', 'units', 'sold'],
+    ...bestSellingCars.map((car, index) => [index + 1, car.id, car.model, car.brand, car.colour, car.price, car.units, car.sold])
+  ];
+  const outputTable = table(tableData);
+  console.log(outputTable);
 
 
   }

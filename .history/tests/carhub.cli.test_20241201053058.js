@@ -366,7 +366,7 @@ describe('CLI App', () => {
 
 
 it('TC20', async () => {
-  const testFilePath = path.resolve(__dirname, 'testFile20.json');
+  const testFilePath\ = path.resolve(__dirname, 'testFile20.json');
   const toAddFilePath = path.resolve(__dirname, 'toAdd20.json');
 
   // Initial cars data in testFile
