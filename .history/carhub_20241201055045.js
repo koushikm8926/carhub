@@ -162,6 +162,17 @@ if (command === 'remove') {
     const fileCars = process.argv[3];  // New cars file
     const inputFile = process.argv[4]; // Existing cars file
 
+    Check if both files exist
+    if (!fs.existsSync(fileCars)) {
+        console.log(`Error: The file ${fileCars} does not exist.`);
+        process.exit(0);
+    }
+
+    if (!fs.existsSync(inputFile)) {
+        console.log(`Error: The file ${inputFile} does not exist.`);
+        process.exit(0);
+    }
+
     try {
         // Read both files
         const newCars = JSON.parse(fs.readFileSync(fileCars, 'utf-8'));
